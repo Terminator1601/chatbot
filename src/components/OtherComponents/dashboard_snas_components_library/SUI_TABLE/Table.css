@@ -1,0 +1,45 @@
+.sticky_table_header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: #fff;
+    background-color: var(--appColor);
+}
+
+.name{
+    text-overflow: ellipsis;
+    /* cursor: pointer; */
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+    max-width: 150px;
+}
+
+.name:hover{
+    overflow: visible;
+    white-space: normal;
+    height:auto;  
+}
+
+.resize-handle{
+    background: black;
+    opacity: 0.5;
+    width: 3px;
+    cursor: col-resize;
+}
+
+.resize-handle:hover, .header-being-resized .resize-handle {
+    opacity: 0.5;
+}
+
+th:hover .resize-handle{
+    opacity: 0.3;
+}
+
+.export-widget{
+    height: 100px;
+    min-width: 400px;
+    position: sticky;
+    z-index: 2 !important;
+    background-color: whitesmoke;
+}

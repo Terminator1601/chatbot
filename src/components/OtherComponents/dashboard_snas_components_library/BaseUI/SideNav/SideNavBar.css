@@ -1,0 +1,361 @@
+
+@-webkit-keyframes swing {
+    0%,
+    30%,
+    50%,
+    70%,
+    100% {
+        /*-webkit-transform: rotate(0deg);*/
+        transform: rotate(0deg);
+    }
+    10% {
+        /*-webkit-transform: rotate(10deg);*/
+        transform: rotate(10deg);
+    }
+    40% {
+        /*-webkit-transform: rotate(-10deg);*/
+        transform: rotate(-10deg);
+    }
+    60% {
+        /*-webkit-transform: rotate(5deg);*/
+        transform: rotate(5deg);
+    }
+    80% {
+        /*-webkit-transform: rotate(-5deg);*/
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes swing{
+    0%,
+    30%,
+    50%,
+    70%,
+    100% {
+        /*-webkit-transform: rotate(0deg);*/
+        transform: rotate(0deg);
+    }
+    10% {
+        /*-webkit-transform: rotate(10deg);*/
+        transform: rotate(10deg);
+    }
+    40% {
+        /*-webkit-transform: rotate(-10deg);*/
+        transform: rotate(-10deg);
+    }
+    60% {
+        /*-webkit-transform: rotate(5deg);*/
+        transform: rotate(5deg);
+    }
+    80% {
+        /*-webkit-transform: rotate(-5deg);*/
+        transform: rotate(-5deg);
+    }
+}
+
+
+.close-sideNavbar{
+    display: none;
+}
+
+.sideNavbar-wrapper{
+    background-color: var(--appDarkBackgroundColor);
+    color: var(--appLightFontColor);
+    width: 280px;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+    top: 0;
+    left: -280px;
+    z-index: 1070;
+    -webkit-transition: left .3s ease, width .3s ease;
+    transition: left .3s ease, width .3s ease;
+}
+
+.sideNavbar-wrapper .sidebar-content {
+    /*max-height: calc(100% - 90px);*/
+    /*height: calc(100% - 90px);*/
+    max-height: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    position: relative;
+}
+
+
+.sideNavbar-wrapper .sidebar-header {
+    padding: 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    border-right: 1px solid var(--appBorderColor);
+}
+
+.sideNavbar-wrapper .sidebar-brand {
+    /*padding: 1rem 1.2rem 0.2rem 1.2rem;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.sideNavbar-wrapper .sidebar-brand .sidebar-brand-logo {
+    max-width: 60px;
+    width: 60px;
+    height: auto;
+}
+
+.sideNavbar-wrapper .sidebar-brand .sidebar-brand-name {
+    /*margin-left: 0.5rem;*/
+    /*padding-right: 10px;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.sideNavbar-wrapper .sidebar-brand .sidebar-brand-name .app-name{
+    color: var(--appFontColor);
+    font-family: "Aquire", "Avant Garde Bold BT", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    justify-content: end;
+}
+
+.sideNavbar-wrapper .sidebar-menu{
+    max-height: calc(100% - 60px);
+    height: calc(100% - 60px);
+    position: relative;
+    border-right: 1px solid var(--appLightBackgroundColor);
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*align-items: center;*/
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-menu-header span {
+    color: var(--appDarkFontColor);
+    font-weight: bold;
+    font-size: 14px;
+    padding: 15px 20px 5px 20px;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.sideNavbar-wrapper .sidebar-content .sidebar-item {
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.sideNavbar-wrapper .sidebar-content .sidebar-item .sidebar-item-info{
+    display: flex;
+    /*margin: auto;*/
+    align-items: center;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-item-icon {
+    background-color: var(--appLightBackgroundColor);
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-item .sidebar-item-icon span.material-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-item:hover .sidebar-item-icon span.material-icons {
+    -webkit-animation: swing ease-in-out .5s 1 alternate;
+    animation: swing ease-in-out .5s 1 alternate;
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-info:after{
+    font-family: "Material Icons", serif;
+    font-weight: 900;
+    content: "\e5cc";
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    background: 0 0;
+    /*
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    */
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown.dropdown-submenu-visible>.sidebar-dropdown-info:after {
+    /*-webkit-transform: rotate(90deg);*/
+    transform: rotate(90deg);
+    /*right: 10px;*/
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-item-title {
+    -webkit-box-flex: 1;
+    /*-ms-flex-positive: 1;*/
+    margin-left: 10px;
+    flex-grow: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*-ms-flex-negative: 1;*/
+    flex-shrink: 1;
+    overflow: hidden;
+    transition: flex-grow .3s linear, margin-left .3s ease;
+}
+.sideNavbar-wrapper .sidebar-menu a{
+    color: var(--appLightFontColor);
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-submenu {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown.dropdown-submenu-visible>.sidebar-dropdown-submenu {
+    max-height: 1000px;
+    overflow: auto;
+    transition: max-height 0.3s ease-in;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-submenu {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-submenu::-webkit-scrollbar {
+    display: none;
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-submenu:hover {
+    -ms-overflow-style: auto;  /* IE and Edge */
+    scrollbar-width: auto;  /* Firefox */
+}
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown>.sidebar-dropdown-submenu:hover::-webkit-scrollbar {
+    display: block;
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu .sidebar-dropdown-submenu-item {
+    padding: 5px 5px 5px 15px;
+    display: flex;
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu li {
+    padding-left: 25px;
+    font-size: 13px;
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu li div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu .sidebar-dropdown-submenu-item .sidebar-item-title:before {
+    font-family: "Material Icons", serif;
+    content: "\ef4a";
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 10px;
+    font-size: 8px;
+}
+
+.sideNavbar-wrapper .sidebar-footer {
+    background-color: var(--appLightBackgroundColor);
+    -webkit-box-shadow: 0 -1px 5px var(--appDarkBackgroundColor);
+    box-shadow: 0 -1px 5px var(--appDarkBackgroundColor);
+    border: 1px solid var(--appLightBackgroundColor);
+    height: 90px;
+}
+
+
+.sideNavbar-wrapper .sidebar-footer .app-version-container {
+    color: var(--appLightFontColor);
+    background-color: var(--appDarkBackgroundColor);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.page-wrapper .sideNavbar-wrapper .sidebar-footer .app-version-container .app-name,
+.page-wrapper .sideNavbar-wrapper .sidebar-footer .app-version-container .release-stability{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.sideNavbar-wrapper .sidebar-footer>div:first-child {
+    border-left: none;
+}
+.sideNavbar-wrapper .sidebar-footer>div:last-child {
+    border-right: none;
+}
+
+.page-wrapper.pinned:not(.sidebar-hovered) .sideNavbar-wrapper .sidebar-footer .dark-light-mode-toggle-container .dark-light-mode-label,
+.page-wrapper.pinned:not(.sidebar-hovered) .sideNavbar-wrapper .sidebar-footer .app-version-container .app-name,
+.page-wrapper.pinned:not(.sidebar-hovered) .sideNavbar-wrapper .sidebar-footer .app-version-container .release-stability{
+    display: none !important;
+}
+
+
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown-submenu-item:hover>:before,
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu .sidebar-dropdown-submenu-item:hover > .sidebar-dropdown-info :before,
+.sideNavbar-wrapper .sidebar-menu .sidebar-item:hover > .sidebar-item-info .sidebar-item-title,
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown:hover > .sidebar-dropdown-info .sidebar-item-title,
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-dropdown-submenu .sidebar-dropdown-submenu-item:hover > .sidebar-item-title,
+.sideNavbar-wrapper .sidebar-menu .sidebar-dropdown:hover > .sidebar-dropdown-info:after,
+.sideNavbar-wrapper .sidebar-menu .sidebar-item:hover .sidebar-item-icon span.material-icons,
+.sideNavbar-wrapper .sidebar-menu .sidebar-item:hover > .sidebar-item-info .sidebar-item-title a{
+    color: var(--appDarkFontColor);
+}
+
+.sideNavbar-wrapper .sidebar-menu a.link-active > .sidebar-item-info .sidebar-item-title,
+.sideNavbar-wrapper .sidebar-menu a.link-active > .sidebar-dropdown-info .sidebar-item-title,
+.sideNavbar-wrapper .sidebar-menu a.link-active > .sidebar-item-icon span.material-icons{
+    color: var(--appColor) !important;
+}

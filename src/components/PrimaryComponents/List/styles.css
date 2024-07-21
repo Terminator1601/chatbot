@@ -1,0 +1,65 @@
+.postgres-data-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+
+.postgres-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.postgres-table th, .postgres-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.postgres-table th {
+    background-color: #f2f2f2;
+}
+
+.postgres-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.postgres-table tbody tr:hover {
+    background-color: #e2e2e2;
+}
+
+.search-bar-container {
+    margin-bottom: 10px;
+}
+
+.search-bar-container input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-bar-container input[type="text"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.postgres-table td button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.postgres-table td button:hover {
+    background-color: darkred;
+}

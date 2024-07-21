@@ -1,0 +1,136 @@
+/* .admin-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.logs-table th,
+.logs-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.logs-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.logs-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.logs-table tr:hover {
+    background-color: #f1f1f1;
+} */
+
+
+
+
+.admin-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.logs-table th,
+.logs-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.logs-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.logs-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.logs-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.logs-table input {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.logs-table button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logs-table button:hover {
+    background-color: #0056b3;
+}
+
+.new-question-container {
+    margin-top: 30px;
+}
+
+.new-question-container h3 {
+    text-align: center;
+    color: #333;
+}
+
+.new-question-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.new-question-form input, .new-question-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.new-question-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-question-form button:hover {
+    background-color: #218838;
+}

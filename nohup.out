@@ -1,0 +1,41 @@
+
+> snas-ng@0.1.0 start
+> set PORT=3003 && react-scripts start
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+(node:9568) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:9568) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view snas-ng in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.21.1.76:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+URIError: Failed to decode param '/%7B%%20static%20'js/jquery-3.7.1.min.js'%20%%7D'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/layer.js:172:12)
+    at Layer.match (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/layer.js:123:27)
+    at matchLayer (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/index.js:585:18)
+    at next (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/index.js:226:15)
+    at expressInit (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/middleware/init.js:40:5)
+    at Layer.handle [as handle_request] (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/index.js:328:13)
+    at /home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/trainee/Desktop/react-django-chatbot/frontend/node_modules/express/lib/router/index.js:346:12)
+npm ERR! path /home/trainee/Desktop/react-django-chatbot/frontend
+npm ERR! command failed
+npm ERR! signal SIGHUP
+npm ERR! command sh -c -- set PORT=3003 && react-scripts start
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/trainee/.npm/_logs/2024-07-15T00_56_49_356Z-debug-0.log

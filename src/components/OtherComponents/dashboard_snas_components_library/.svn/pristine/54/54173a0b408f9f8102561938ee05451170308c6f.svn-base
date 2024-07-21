@@ -1,0 +1,30 @@
+import React from 'react'
+import './Table.css'
+import BaseTable from './BaseTable'
+import TableWithLocalPagination from './TableWithLocalPagination'
+import TableWithCustomPagination from './TableWithCustomPagination'
+
+export default function SuiTable(props) {
+    let tableType = 'base_table'
+    if (Boolean(props.autoFetchData)) {
+        tableType = 'auto_fetch_table'
+    }
+    if (Boolean(props.disablePagination) === false ){
+        if(Boolean(props.customPagination)) {
+            tableType = 'table_with_custom_pagination'
+        }
+        else{
+            tableType = 'table_with_local_pagination'
+        }
+    }
+
+    return (
+        tableType === 'auto_fetch_table'
+            ? <> <div>Basetable</div><BaseTable {...props} /> </>
+            : tableType === 'table_with_local_pagination'
+                ?<> <div>table_with_local_pagination</div> <TableWithLocalPagination {...props} /> </>
+                :tableType === 'table_with_custom_pagination' 
+                ?<>Table with custom pagination <TableWithCustomPagination  {...props}  /></>
+                :<>  <div>FetchTable</div><BaseTable {...props} /> </>
+    )
+}

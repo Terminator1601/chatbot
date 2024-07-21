@@ -1,0 +1,231 @@
+
+
+export function array_of_array_to_array_of_obj(propsTableRows, propsTableColumns, type_columns) {
+    let columns = []
+    if (Array.isArray(propsTableColumns) && propsTableColumns.length > 0 && (typeof propsTableColumns[0] === 'string' || propsTableColumns[0] instanceof String)) {
+        columns = propsTableColumns
+    }
+    else {
+        columns = propsTableColumns.map((item) => item.field)
+    }
+    return propsTableRows.map((data_row) => {
+        let new_row = {}
+        columns.map((column_name, index) => {
+            new_row[column_name] = data_row[index]
+            return null
+        })
+        return new_row
+    })
+}
+
+export function columns_array_to_array_of_objects(columns_array) {
+    return columns_array.map((column_name) => ({ 'title': column_name, 'field': column_name }))
+}
+
+export function numberToBytes(value) {
+    if (isNaN(value)) {
+        return value
+    }
+    let x = Math.round(value / 1073741824)
+    if (x > 1) {
+        return x + ' GB'
+    }
+    else {
+        x = Math.round(value / 1048576)
+        if (x > 1) {
+            return x + ' MB'
+        }
+        else {
+            x = Math.round(value / 1024)
+            if (x > 1) {
+                return x + ' KB'
+            }
+            else {
+                return value + ' B'
+            }
+        }
+    }
+}
+
+export function numberToBits(value) {
+    if (isNaN(value)) {
+        return value
+    }
+    let x = Math.round(value / 1073741824)
+    if (x > 1) {
+        return x + ' Gb'
+    }
+    else {
+        x = Math.round(value / 1048576)
+        if (x > 1) {
+            return x + ' Mb'
+        }
+        else {
+            x = Math.round(value / 1024)
+            if (x > 1) {
+                return x + ' Kb'
+            }
+            else {
+                return value + ' b'
+            }
+        }
+    }
+}
+
+export function BytesToNumber(value) {
+    if (value) {
+        let x = value.toString()
+        if (x.endsWith('TB')) {
+            return Math.round(parseFloat(x.replace('GB', '')) * 1073741824 * 1024)
+        }
+        else if (x.endsWith('GB')) {
+            return Math.round(parseFloat(x.replace('GB', '')) * 1073741824)
+        }
+        else if (x.endsWith('MB')) {
+            return Math.round(parseFloat(x.replace('MB', '')) * 1048576)
+        }
+        else if (x.endsWith('KB')) {
+            return Math.round(parseFloat(x.replace('KB', '')) * 1024)
+        }
+        else if (x.endsWith('B')) {
+            return Math.round(parseFloat(x.replace('B', '')))
+        }
+        else {
+            return 0
+        }
+    }
+}
+
+export function getDatetimeLabelFromDateRange(startDate, endDate) {
+    let label = startDate
+    startDate = new Date(startDate)
+    endDate = new Date(endDate)
+    // startDate.setHours(startDate.getHours() + 5)
+    // startDate.setMinutes(startDate.getMinutes() + 30) 
+    // endDate.setHours(endDate.getHours() + 5)
+    // endDate.setMinutes(endDate.getMinutes() + 30)
+
+    if (startDate.toLocaleDateString() === endDate.toLocaleDateString()) {
+        label = startDate.toDateString() + ' , ' + startDate.toLocaleTimeString() + ' to ' + endDate.toLocaleTimeString()
+    }
+    else {
+        label = startDate.toDateString() + ' to ' + endDate.toDateString()
+    }
+    return label
+}
+
+
+export const convertDataIntoSeriesArray = (data) => {
+    try {
+        let temp = []
+        if (Array.isArray(data)) {
+            // Assumming that the either of the first 2 index will contain date, and key, and the third index will contain value
+            let date_position = 0
+            let key_position = 1
+            if (data.length > 0) {
+                if (isNaN(data[0][1]) && (new Date(data[0][1])) != "Invalid Date") {
+                    date_position = 1
+                    key_position = 0
+                }
+            }
+            let series = {}
+            data.map((item) => {
+                if (!(item[key_position] in series)) {
+                    series[item[key_position]] = []
+                }
+                series[item[key_position]].push([item[date_position], item[2]])
+            })
+            temp = []
+            for (let key in series) {
+                temp.push({ 'name': key, 'data': series[key] })
+            }
+        }
+        else {
+            temp = data
+            let series = {}
+            for (let key in temp) {
+                let sub_distribution = temp[key]
+                for (let sub_key in sub_distribution) {
+                    if (!(sub_key in series)) {
+                        series[sub_key] = []
+                    }
+                    series[sub_key].push([parseInt(key), sub_distribution[sub_key]])
+                }
+            }
+            temp = []
+            for (let key in series) {
+                temp.push({ 'name': key, 'data': series[key] })
+            }
+        }
+        return { series: temp }
+    }
+    catch (err) {
+        return { series: [] }
+    }
+}
+
+export const convertObjectIntoSeparateLabelValueArray = (data) => {
+    try {
+        let labels = []
+        let values = []
+        if (Array.isArray(data)) {
+            data.forEach((item) => {
+                if(item[0]){
+                    labels.push(item[0])
+                }
+                else{
+                    labels.push(JSON.stringify(item[0]))
+                }
+                values.push(item[1])
+            })
+        }
+        else {
+            Object.keys(data).forEach((key) => {
+                if(key){
+                    labels.push(key)
+                }
+                else{
+                    labels.push(JSON.stringify(key)) 
+                }
+                values.push(data[key])
+            })
+        }
+        return { labels: labels, values: values }
+    }
+    catch (err) {
+        alert(err)
+        return { labels: [], values: [] }
+    }
+}
+
+export const convertResponseToTableFormat = (response) => {
+    try {
+        if ('columns' in response && ('data' in response)) {
+            let rows = array_of_array_to_array_of_obj(response.data, response.columns)
+            let columns = columns_array_to_array_of_objects(response.columns)
+            return { tableRows: rows, tableColumns: columns }
+        }
+        else {
+            return null
+        }
+    }
+    catch (err) {
+        return null
+    }
+}
+
+let connStateMapToUFName = {
+    S0: {'keyword':'attempt with no response', 'description':''}, // Connection attempt seen, no reply.
+    S1: {'keyword':'established', 'description':''},// Connection established, not terminated.
+    S2: {'keyword':'established and closed by originator', 'description':''}, //Connection established and close attempt by originator seen (but no reply yet).
+    S3: {'keyword':'established and closed by responder', 'description':''}, //Connection established and close attempt by responder seen (but no reply yet).
+    SF: {'keyword':'established and terminated', 'description':''}, //Normal established connection, both endpoints completed (handshake done).
+    REJ: {'keyword':'attempt rejected', 'description':''},//Connection attempt rejected.
+    RSTO: {'keyword':'established and reset by originator', 'description':''}, //Connection established, originator aborted (sent a reset).
+    RSTR: {'keyword':'established and reset by responder', 'description':''}, //Established connection, responder aborted (sent a reset).
+    RSTOS0: {'keyword':'originator sent SYN then RST, no response from responder', 'description':''},//Originator sent a SYN followed by a RST, but no response from the responder.
+    RSTRH: {'keyword':'responder sent SYN ACK then RST', 'description':''},//Responder sent a SYN ACK followed by a RST, indicating a host error.
+}
+export const getUFConnState=(connState)=>{
+    return connStateMapToUFName[connState] ?  connStateMapToUFName[connState]['keyword'] : connState
+}

@@ -1,0 +1,65 @@
+import React, { useState } from 'react'
+import { DateTimeSelector } from '../TimePeriodSelectors'
+import { SuiTextField } from '../TextField'
+
+export default function GeneralFilter(props) {
+    const { filterList } = props
+    const [filters, setFilters1] = useState([...filterList])
+ 
+    const onApplyButtonClick = () => {
+        let temp = {}
+        for (let row of filters) {
+            temp[row.field] = row.value
+        }
+        props.onFilterChange(temp)
+    }
+
+    const updateFilterState1 = (field, value) => {
+        setFilters1(prevFilters => 
+            prevFilters.map(filter => 
+              filter.field === field ? { ...filter, value: value } : filter
+            )
+        );
+    }
+
+    return (
+        <div className='row app-dark-background-color p-3 align-items-center'>
+            {/* {JSON.stringify(filters)} */}
+            {
+                filters.map((item, index) => {
+                    if (item.type === 'date') {
+                        return <div key={'filter' + { index }} className='col-auto'>
+                            <DateTimeSelector
+                                timeperiodObject={(item.value && typeof item.value === 'object') ? item.value : {}}
+                                setTimeperiodObject={(tObj) => {  }}
+                            />
+                        </div>
+                    }
+                    if (item.type === 'text') {
+                        return <div className='col-auto'>
+                            <SuiTextField
+                                value={item.value}
+                                label={item.label}
+                                info={item.info || `For partial match use * like "*${item.field}*"`}
+                                onChange={(newValue) => {
+                                    updateFilterState1(item.field, newValue)
+                                }}
+                            />
+                        </div>
+                    }
+                })
+            }
+            <div className='col-1'>
+                <button
+                    className='btn btn-sm btn-app-color'
+                    style={{ fontSize: '15px', width: '100px' }}
+                    onClick={onApplyButtonClick}
+                >
+                    Apply
+                </button>
+            </div>
+        </div>
+    )
+}
+
+// return <div className='col-lg-2 col-md-4 col-sm-6'></div>

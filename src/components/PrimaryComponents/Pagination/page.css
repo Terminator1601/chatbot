@@ -1,0 +1,20 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-item button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.page-item.active button {
+    font-weight: bold;
+    text-decoration: underline;
+}

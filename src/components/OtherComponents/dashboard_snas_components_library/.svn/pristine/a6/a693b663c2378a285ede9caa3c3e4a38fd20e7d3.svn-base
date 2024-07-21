@@ -1,0 +1,56 @@
+import React from 'react'
+import BaseTable from "./BaseTable";
+import React, { useEffect, useState } from 'react'
+import { fetchPostJson } from '../FetchUtils';
+
+export default function TableWithAutoFetch(props) {
+
+    const [pageNumber, setPageNumber] = useState(0)
+    const [pageSize, setPageSize] = useState(100)
+    const [tableData, setTableData] = useState({
+        tableRows:[],
+        tableColumns:[]
+    })
+    
+    const propsRequestData = props.requestData
+    useEffect(()=>{
+        let requestData = {
+            ...propsRequestData,
+            'requestType': 'chartTable',
+            'pageNum': pageNumber,
+            'pageSize': pageSize,
+        }
+        const onFailure = (response)=>{
+            setTableData({
+                tableRows:[],
+                tableColumns:[]
+            })
+        }
+        const onSuccess = (response) => {
+            setTableData({
+                tableRows:Array.isArray(response['table_rows'])?response['table_rows'] : [],
+                tableRows:Array.isArray(response['table_columns'])?response['table_columns'] : [],
+            })
+        }
+        fetchPostJson(
+            window.dashboardConfig.API_URL,
+            props.post_url_suffix,
+            requestData,
+            onSuccess,
+            onFailure,
+            props.fetchKeyword
+        )
+    },[pageNumber, pageSize])
+
+    return (
+        <BaseTable
+            {...props}
+            tableRows={tableData.tableRows}
+            tableColumns={tableData.tableColumns}
+            pageNumber={props.customPagination.pageNumber}
+            pageSize={props.customPagination.pageSize}
+            onPageChange={props.customPagination.onPageChange}
+            onChangePageSize={props.customPagination.onPageSizeChange}
+        />
+    )
+}

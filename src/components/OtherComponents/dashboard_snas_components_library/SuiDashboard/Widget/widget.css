@@ -1,0 +1,12 @@
+.widget-title{
+    height: 30px;
+    font-size: 30px;
+}
+
+.widget-body{
+    height: calc(100% - 30px);
+}
+
+.widget-body-with-filter{
+    height: calc(100% - 80px);
+}

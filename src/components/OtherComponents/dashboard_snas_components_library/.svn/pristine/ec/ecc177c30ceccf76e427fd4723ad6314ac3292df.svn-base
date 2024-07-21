@@ -1,0 +1,27 @@
+import {TextField} from "@mui/material";
+
+export default function MuiTextField(props){
+    return <TextField
+        sx={{
+            width:props.width ? props.width:'100%',
+            '&.MuiOutlinedInput-notchedOutline':{
+                borderColor:'yellow'
+            }
+        }}
+        value={props.value}
+        // inputProps={{
+        //     sx:{
+        //         border:'1px solid green',
+        //         borderRadius:'3px',
+        //         '&:hover fieldset':{
+        //             border:'2px solid red!important'
+        //         }
+        //     }
+        // }}
+        onChange={(event  )=>{
+            props.onChange(event.target.value)
+        }}
+        label={props.label}
+        size='small'
+    />
+}

@@ -1,0 +1,42 @@
+import { Typography } from '@mui/material'
+import React from 'react'
+
+export default function TopNavbar(props) {
+    return props.showTopNavbar && (
+        <nav className={`navbar navbar-dark navbar-expand-lg app-font-color app-color-bg overflow-visible top-nav-bar-height position-fixed w-100`} style={{ zIndex: window.zIndexes['topNavbar'] }}>
+            <div className="container-fluid">
+                <div className='col-1 flex-grow-1'>
+                    <button
+                        className={"toggle-sideNavbar d-flex justify-content-center align-items-center " + (props.isSidebarToggled ? "active" : "")}
+                        data-toggle="tooltip"
+                        data-original-title="Toggle Menu"
+                        onClick={props.toggleSideNavBarToggleState}
+                    >
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </button>
+                </div>
+                {/* <div className='col-auto'>
+                </div> */}
+                {
+                    //!props.topNavbarTitle && props.topNavbarComponent &&
+                    <>
+                        <div className='col-10'>
+                            {
+                                props.topNavbarTitle ?
+                                    <div className='d-flex justify-content-center'>
+                                        <Typography variant='h5' >{props.topNavbarTitle}</Typography>
+                                    </div>
+                                    : props.topNavbarComponent ?
+                                        props.topNavbarComponent
+                                        : null
+                            }
+                        </div>
+                        <div className='col-1'></div>
+                    </>
+                }
+            </div>
+        </nav>
+    )
+}
